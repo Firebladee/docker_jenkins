@@ -1,19 +1,32 @@
 pipeline {
   agent any
   stages {
-    stage('Build') {
+    stage('markdown') {
+      checkout([
+        $class: 'Gitscm',
+        branches: [[name: 'ref/heads/master']],
+        doGenerateSubmoduleConfigurations: false,
+        externsions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'markdown']],
+        submoduleCfg: [],
+        userRemoteConfigs: [[url: 'https://github.com/markdownlint/markdownlint.git']]
+      ])
       steps {
-        echo 'Building..'
+        echo 'markdown..'
       }
     }
-    stage('Test') {
+    stage('shellcheck') {
       steps {
-        echo 'Testing..'
+        echo 'shellcheck..'
       }
     }
-    stage('Deploy') {
+    stage('groovy') {
       steps {
-        echo 'Deploying..'
+        echo 'groovy..'
+      }
+    }
+    stage('json') {
+      steps {
+        echo 'json..'
       }
     }
   }
