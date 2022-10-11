@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('markdown') {
       checkout([
-        $class: 'Gitscm',
+        $class: 'GitSCM',
         branches: [[name: 'ref/heads/master']],
         doGenerateSubmoduleConfigurations: false,
         externsions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'markdown']],
