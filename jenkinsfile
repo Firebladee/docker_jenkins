@@ -10,7 +10,7 @@ pipeline {
     stage('shellcheck') {
       steps {
         echo 'shellcheck..'
-        sh `find . -type f -exec sh -c "head -n 1 {} | egrep -a '/bin/bash|/bin/sh'" \; -print -exec shellcheck {} \;`
+        shellcheck push_jobs.sh
       }
     }
     stage('groovy') {
