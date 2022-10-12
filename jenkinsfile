@@ -1,21 +1,10 @@
 pipeline {
   agent any
   stages {
-    stage('checkout') {
-      steps{
-        echo 'Downloading markdown'
-        checkout([
-          $class: 'GitSCM',
-          branches: [[name: 'ref/heads/master']],
-          doGenerateSubmoduleConfigurations: false,
-          extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'markdown']],
-          userRemoteConfigs: [[url: 'https://github.com/markdownlint/markdownlint.git']]
-        ])
-      }
-    }
     stage('markdown') {
       steps {
         echo 'markdown..'
+        mdl **/*.md
       }
     }
     stage('shellcheck') {
