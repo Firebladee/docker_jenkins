@@ -5,7 +5,7 @@ pipeline {
       steps{
         echo 'Downloading markdown'
         checkout([
-          $class: 'GitSCM',
+          $class: 'hudson.plugins.git.GitSCM',
           branches: [[name: 'ref/heads/master']],
           doGenerateSubmoduleConfigurations: false,
           externsions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'markdown']],
