@@ -2,14 +2,17 @@ pipeline {
   agent any
   stages {
     stage('checkout') {
-      checkout([
-        $class: 'GitSCM',
-        branches: [[name: 'ref/heads/master']],
-        doGenerateSubmoduleConfigurations: false,
-        externsions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'markdown']],
-        submoduleCfg: [],
-        userRemoteConfigs: [[url: 'https://github.com/markdownlint/markdownlint.git']]
-      ])
+      steps{
+        echo 'Downloading markdown'
+        checkout([
+          $class: 'GitSCM',
+          branches: [[name: 'ref/heads/master']],
+          doGenerateSubmoduleConfigurations: false,
+          externsions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'markdown']],
+          submoduleCfg: [],
+          userRemoteConfigs: [[url: 'https://github.com/markdownlint/markdownlint.git']]
+        ])
+      }
     }
     stage('markdown') {
       steps {
