@@ -10,7 +10,7 @@ pipeline {
     stage('shellcheck') {
       steps {
         echo 'shellcheck..'
-        shellcheck push_jobs.sh
+        sh 'shellcheck push_jobs.sh'
       }
     }
     stage('groovy') {
