@@ -7,7 +7,9 @@ pipeline {
         checkout([
           $class: 'GitSCM',
           branches: [[name: 'ref/heads/master']],
-          externsions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'markdown']],
+          doGenerateSubmoduleConfigurations: false,
+          extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'markdown']],
+          submoduleCfg: [],
           userRemoteConfigs: [[url: 'https://github.com/markdownlint/markdownlint.git']]
         ])
       }
