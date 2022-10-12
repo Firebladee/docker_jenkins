@@ -1,7 +1,7 @@
 pipeline {
   agent any
   stages {
-    stage('markdown') {
+    stage('checkout') {
       checkout([
         $class: 'GitSCM',
         branches: [[name: 'ref/heads/master']],
@@ -10,6 +10,8 @@ pipeline {
         submoduleCfg: [],
         userRemoteConfigs: [[url: 'https://github.com/markdownlint/markdownlint.git']]
       ])
+    }
+    stage('markdown') {
       steps {
         echo 'markdown..'
       }
