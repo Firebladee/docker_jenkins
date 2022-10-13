@@ -10,14 +10,13 @@ pipeline {
     stage('shellcheck') {
       steps {
         echo 'shellcheck..'
-        sh 'pwd'
-        sh 'ls'
-        sh 'shellcheck push_jobs.sh'
+        #sh 'shellcheck push_jobs.sh'
       }
     }
     stage('groovy') {
       steps {
         echo 'groovy..'
+        sh 'npm-groovy-lint **/*.groovy'
       }
     }
     stage('json') {
