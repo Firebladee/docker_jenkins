@@ -10,6 +10,7 @@ pipeline {
     stage('shellcheck') {
       steps {
         echo 'shellcheck..'
+        sh 'shellcheck push_jobs.sh'
       }
     }
     stage('groovy') {
@@ -21,6 +22,7 @@ pipeline {
     stage('json') {
       steps {
         echo 'json..'
+        sh 'find . -name "*.json" | xargs -n 1 jsonlint -q'
       }
     }
   }

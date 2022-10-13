@@ -2,7 +2,7 @@
 
 OPTIND=1 # Reset in case getopts has been used previously in the shell.
 
-basic_auth=test:111adaca9be9dc74ea4123029e849a8272
+basic_auth=
 jenkins_address="localhost:8080"
 job_name=test
 file=config.xml
